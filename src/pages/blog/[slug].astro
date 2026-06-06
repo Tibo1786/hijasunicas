@@ -1,0 +1,71 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { PLACEHOLDER_POSTS } from '../../lib/sanity';
+import type { GetStaticPaths } from 'astro';
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  return PLACEHOLDER_POSTS.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+};
+
+const { post } = Astro.props;
+const baseUrl = import.meta.env.BASE_URL;
+
+const formattedDate = new Date(post.publishDate).toLocaleDateString('es-ES', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+---
+
+<BaseLayout title={`${post.title} — Hijas Únicas Editorial`} description={post.excerpt}>
+  <article class="py-16 sm:py-24">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <a
+        href={`${baseUrl}blog/`}
+        class="inline-flex items-center text-text-light hover:text-navy text-sm mb-8 transition-colors"
+      >
+        <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+        Volver al blog
+      </a>
+
+      {post.category && (
+        <span class="inline-block text-gold text-xs uppercase tracking-widest font-medium mb-3">
+          {post.category}
+        </span>
+      )}
+
+      <h1 class="font-heading text-navy text-3xl sm:text-4xl lg:text-5xl leading-tight mb-4">
+        {post.title}
+      </h1>
+
+      <div class="flex items-center gap-3 text-text-light text-sm mb-8">
+        <span>{post.author}</span>
+        <span class="text-cream-dark">|</span>
+        <time>{formattedDate}</time>
+      </div>
+
+      {post.coverUrl && (
+        <div class="aspect-[16/9] bg-cream-dark overflow-hidden mb-10">
+          <img
+            src={post.coverUrl}
+            alt={post.title}
+            class="w-full h-full object-cover"
+          />
+        </div>
+      )}
+
+      <div class="prose prose-lg max-w-none text-text">
+        <p>{post.excerpt}</p>
+        <p class="text-text-light italic mt-8">
+          Este es un artículo de ejemplo. El contenido completo se cargará desde Sanity CMS
+          una vez configurado.
+        </p>
+      </div>
+    </div>
+  </article>
+</BaseLayout>

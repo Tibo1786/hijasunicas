@@ -1,0 +1,66 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+
+const baseUrl = import.meta.env.BASE_URL;
+---
+
+<BaseLayout title="Nosotras — Hijas Únicas Editorial" description="Conoce la historia y la misión de Hijas Únicas Editorial.">
+  <section class="py-16 sm:py-24">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <SectionHeading
+        title="Nosotras"
+        subtitle="Quiénes somos y por qué hacemos lo que hacemos."
+      />
+
+      <div class="prose prose-lg max-w-none text-text space-y-6">
+        <p>
+          <strong class="text-navy">Hijas Únicas Editorial</strong> nace de la convicción de que cada
+          historia merece ser contada con cuidado, respeto y pasión. Somos una editorial independiente
+          dedicada a publicar obras que exploran la experiencia humana desde perspectivas diversas y auténticas.
+        </p>
+
+        <p>
+          Creemos en el poder transformador de la literatura. Cada libro que publicamos es una
+          invitación a descubrir nuevas formas de entender el mundo, a través de voces que
+          muchas veces han permanecido en silencio.
+        </p>
+
+        <h3 class="font-heading text-navy text-2xl mt-12">Nuestra misión</h3>
+        <p>
+          Dar espacio a historias únicas que desafían, conmueven e inspiran. Trabajamos mano a mano
+          con nuestras autoras y autores para crear libros que no solo se lean, sino que se sientan.
+        </p>
+
+        <h3 class="font-heading text-navy text-2xl mt-12">Nuestros valores</h3>
+        <ul class="space-y-3">
+          <li>
+            <strong class="text-navy">Autenticidad:</strong> Buscamos voces genuinas que cuenten sus historias
+            sin artificios.
+          </li>
+          <li>
+            <strong class="text-navy">Cuidado editorial:</strong> Cada libro recibe la atención y el
+            mimo que merece, desde la edición hasta el diseño.
+          </li>
+          <li>
+            <strong class="text-navy">Diversidad:</strong> Apostamos por una pluralidad de voces,
+            temas y perspectivas.
+          </li>
+          <li>
+            <strong class="text-navy">Compromiso:</strong> Con nuestros autores, con nuestros lectores
+            y con la literatura.
+          </li>
+        </ul>
+      </div>
+
+      <div class="mt-16 text-center">
+        <a
+          href={`${baseUrl}contacto/`}
+          class="inline-block bg-navy text-cream px-8 py-3 font-heading text-sm tracking-widest uppercase hover:bg-navy-light transition-colors"
+        >
+          Contactar con nosotras
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

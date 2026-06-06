@@ -1,0 +1,38 @@
+---
+interface Props {
+  title: string;
+  excerpt: string;
+  date: string;
+  coverUrl?: string;
+  slug: string;
+}
+
+const baseUrl = import.meta.env.BASE_URL;
+const { title, excerpt, date, coverUrl, slug } = Astro.props;
+
+const formattedDate = new Date(date).toLocaleDateString('es-ES', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+---
+
+<article class="group">
+  <a href={`${baseUrl}blog/${slug}/`} class="block">
+    {coverUrl && (
+      <div class="aspect-[16/9] overflow-hidden bg-cream-dark mb-4">
+        <img
+          src={coverUrl}
+          alt={title}
+          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+          loading="lazy"
+        />
+      </div>
+    )}
+    <time class="text-text-light text-xs uppercase tracking-wider">{formattedDate}</time>
+    <h3 class="font-heading text-navy text-xl mt-2 group-hover:text-gold transition-colors">
+      {title}
+    </h3>
+    <p class="text-text-light text-sm mt-2 line-clamp-3">{excerpt}</p>
+  </a>
+</article>

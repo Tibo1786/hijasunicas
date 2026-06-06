@@ -1,0 +1,88 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { PLACEHOLDER_BOOKS } from '../../lib/sanity';
+import type { GetStaticPaths } from 'astro';
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  return PLACEHOLDER_BOOKS.map((book) => ({
+    params: { slug: book.slug },
+    props: { book },
+  }));
+};
+
+const { book } = Astro.props;
+const baseUrl = import.meta.env.BASE_URL;
+
+const formattedDate = new Date(book.publishDate).toLocaleDateString('es-ES', {
+  year: 'numeric',
+  month: 'long',
+});
+---
+
+<BaseLayout title={`${book.title} — Hijas Únicas Editorial`} description={book.synopsis}>
+  <section class="py-16 sm:py-24">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <a
+        href={`${baseUrl}catalogo/`}
+        class="inline-flex items-center text-text-light hover:text-navy text-sm mb-8 transition-colors"
+      >
+        <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+        Volver al catálogo
+      </a>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+        <!-- Cover -->
+        <div class="aspect-[2/3] bg-cream-dark overflow-hidden">
+          <img
+            src={book.coverUrl}
+            alt={`Portada de ${book.title}`}
+            class="w-full h-full object-cover"
+          />
+        </div>
+
+        <!-- Details -->
+        <div>
+          <h1 class="font-heading text-navy text-3xl sm:text-4xl mb-2">{book.title}</h1>
+          <p class="text-text-light text-lg mb-6">{book.author}</p>
+
+          <div class="w-12 h-0.5 bg-gold mb-6"></div>
+
+          <p class="text-text leading-relaxed mb-8">{book.synopsis}</p>
+
+          <dl class="space-y-3 text-sm">
+            <div class="flex gap-2">
+              <dt class="text-navy font-medium">Fecha de publicación:</dt>
+              <dd class="text-text-light">{formattedDate}</dd>
+            </div>
+            {book.isbn && (
+              <div class="flex gap-2">
+                <dt class="text-navy font-medium">ISBN:</dt>
+                <dd class="text-text-light">{book.isbn}</dd>
+              </div>
+            )}
+          </dl>
+
+          {book.buyLinks && book.buyLinks.length > 0 && (
+            <div class="mt-8 space-y-3">
+              <h3 class="font-heading text-navy text-lg">Comprar</h3>
+              <div class="flex flex-wrap gap-3">
+                {book.buyLinks.map((link) => (
+                  <a
+                    href={link.url}
+                    target="_blank"
+                    rel="noopener"
+                    class="inline-block bg-navy text-cream px-6 py-2 font-heading text-sm tracking-widest uppercase hover:bg-navy-light transition-colors"
+                  >
+                    {link.label}
+                  </a>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,30 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SectionHeading from '../../components/SectionHeading.astro';
+import BookCard from '../../components/BookCard.astro';
+import { PLACEHOLDER_BOOKS } from '../../lib/sanity';
+
+const books = PLACEHOLDER_BOOKS;
+---
+
+<BaseLayout title="Catálogo — Hijas Únicas Editorial" description="Descubre todos los libros publicados por Hijas Únicas Editorial.">
+  <section class="py-16 sm:py-24">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <SectionHeading
+        title="Catálogo"
+        subtitle="Todos nuestros títulos publicados."
+      />
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+        {books.map((book) => (
+          <BookCard
+            title={book.title}
+            author={book.author}
+            coverUrl={book.coverUrl}
+            slug={book.slug}
+            synopsis={book.synopsis}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,91 @@
+---
+const baseUrl = import.meta.env.BASE_URL;
+const currentPath = Astro.url.pathname;
+
+const links = [
+  { href: `${baseUrl}`, label: 'Inicio' },
+  { href: `${baseUrl}catalogo/`, label: 'Catálogo' },
+  { href: `${baseUrl}blog/`, label: 'Blog' },
+  { href: `${baseUrl}nosotras/`, label: 'Nosotras' },
+  { href: `${baseUrl}contacto/`, label: 'Contacto' },
+];
+
+function isActive(href: string): boolean {
+  if (href === baseUrl) return currentPath === href;
+  return currentPath.startsWith(href);
+}
+---
+
+<header class="bg-cream border-b border-cream-dark">
+  <nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-20">
+      <a href={baseUrl} class="flex items-center gap-3 group">
+        <img
+          src={`${baseUrl}logo.png`}
+          alt="Hijas Únicas Editorial"
+          class="h-12 w-auto"
+        />
+      </a>
+
+      <!-- Desktop nav -->
+      <ul class="hidden md:flex items-center gap-8">
+        {links.map((link) => (
+          <li>
+            <a
+              href={link.href}
+              class:list={[
+                'font-heading text-sm tracking-widest uppercase transition-colors',
+                isActive(link.href)
+                  ? 'text-gold'
+                  : 'text-navy hover:text-gold',
+              ]}
+            >
+              {link.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+
+      <!-- Mobile menu button -->
+      <button
+        id="mobile-menu-btn"
+        class="md:hidden text-navy p-2"
+        aria-label="Abrir menú"
+        aria-expanded="false"
+      >
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile nav -->
+    <ul id="mobile-menu" class="hidden md:hidden pb-4 space-y-2">
+      {links.map((link) => (
+        <li>
+          <a
+            href={link.href}
+            class:list={[
+              'block font-heading text-sm tracking-widest uppercase py-2 transition-colors',
+              isActive(link.href)
+                ? 'text-gold'
+                : 'text-navy hover:text-gold',
+            ]}
+          >
+            {link.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+</header>
+
+<script>
+  const btn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  btn?.addEventListener('click', () => {
+    const expanded = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', String(!expanded));
+    menu?.classList.toggle('hidden');
+  });
+</script>

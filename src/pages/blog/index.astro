@@ -1,0 +1,32 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SectionHeading from '../../components/SectionHeading.astro';
+import BlogCard from '../../components/BlogCard.astro';
+import { PLACEHOLDER_POSTS } from '../../lib/sanity';
+
+const posts = [...PLACEHOLDER_POSTS].sort(
+  (a, b) => new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime()
+);
+---
+
+<BaseLayout title="Blog — Hijas Únicas Editorial" description="Noticias, entrevistas y novedades de Hijas Únicas Editorial.">
+  <section class="py-16 sm:py-24">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <SectionHeading
+        title="Blog"
+        subtitle="Noticias, entrevistas y reflexiones desde la editorial."
+      />
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        {posts.map((post) => (
+          <BlogCard
+            title={post.title}
+            excerpt={post.excerpt}
+            date={post.publishDate}
+            coverUrl={post.coverUrl}
+            slug={post.slug}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

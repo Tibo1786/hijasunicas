@@ -1,0 +1,54 @@
+---
+const baseUrl = import.meta.env.BASE_URL;
+const year = new Date().getFullYear();
+---
+
+<footer class="bg-navy text-cream/80">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <!-- Brand -->
+      <div>
+        <img
+          src={`${baseUrl}logo-light.png`}
+          alt="Hijas Únicas Editorial"
+          class="h-16 w-auto mb-4"
+        />
+        <p class="text-sm leading-relaxed">
+          Historias que importan, contadas por voces únicas.
+        </p>
+      </div>
+
+      <!-- Links -->
+      <div>
+        <h3 class="font-heading text-cream text-lg mb-4">Navegar</h3>
+        <ul class="space-y-2 text-sm">
+          <li><a href={`${baseUrl}catalogo/`} class="hover:text-gold transition-colors">Catálogo</a></li>
+          <li><a href={`${baseUrl}blog/`} class="hover:text-gold transition-colors">Blog</a></li>
+          <li><a href={`${baseUrl}nosotras/`} class="hover:text-gold transition-colors">Nosotras</a></li>
+          <li><a href={`${baseUrl}contacto/`} class="hover:text-gold transition-colors">Contacto</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div>
+        <h3 class="font-heading text-cream text-lg mb-4">Contacto</h3>
+        <ul class="space-y-2 text-sm">
+          <li>
+            <a href="mailto:info@hijasunicas.com" class="hover:text-gold transition-colors">
+              info@hijasunicas.com
+            </a>
+          </li>
+          <li>
+            <a href="https://instagram.com/hijasunicas" target="_blank" rel="noopener" class="hover:text-gold transition-colors">
+              Instagram
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="border-t border-cream/20 mt-8 pt-8 text-center text-xs text-cream/50">
+      <p>&copy; {year} Hijas Únicas Editorial. Todos los derechos reservados.</p>
+    </div>
+  </div>
+</footer>
