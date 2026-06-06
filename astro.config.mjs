@@ -4,7 +4,7 @@ import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
   site: 'https://tibo1786.github.io',
-  base: '/hijasunicas',
+  base: '/hijasunicas/',
   output: 'static',
   vite: {
     plugins: [tailwindcss()],
