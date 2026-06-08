@@ -1,91 +1,96 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import Hero from '../components/Hero.astro';
-import SectionHeading from '../components/SectionHeading.astro';
-import BookCard from '../components/BookCard.astro';
-import BlogCard from '../components/BlogCard.astro';
-import { PLACEHOLDER_BOOKS, PLACEHOLDER_POSTS } from '../lib/sanity';
-
-const featuredBooks = PLACEHOLDER_BOOKS.filter((b) => b.featured).slice(0, 3);
-const latestPost = PLACEHOLDER_POSTS[PLACEHOLDER_POSTS.length - 1];
 const baseUrl = import.meta.env.BASE_URL;
 ---
 
-<BaseLayout title="Hijas Únicas Editorial">
-  <Hero />
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hijas Únicas Editorial — Próximamente</title>
+    <meta name="description" content="Hijas Únicas Editorial — Todo empieza con una historia y la nuestra está a punto de empezar." />
+    <link rel="icon" type="image/svg+xml" href={`${baseUrl}favicon.svg`} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-  <!-- Featured Books -->
-  <section class="py-16 sm:py-20">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <SectionHeading
-        title="Nuestros libros"
-        subtitle="Historias que merecen ser contadas y leídas."
+      body {
+        background-color: #f5efe0;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: 'Lora', serif;
+        color: #1a2a5e;
+      }
+
+      .container {
+        text-align: center;
+        padding: 2rem;
+        max-width: 640px;
+      }
+
+      .logo {
+        width: 280px;
+        max-width: 80vw;
+        height: auto;
+        margin: 0 auto 3rem;
+        display: block;
+      }
+
+      .divider {
+        width: 60px;
+        height: 2px;
+        background-color: #c4a35a;
+        margin: 0 auto 2.5rem;
+      }
+
+      .message {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.5rem;
+        line-height: 1.6;
+        color: #1a2a5e;
+        margin-bottom: 1rem;
+        font-weight: 400;
+      }
+
+      .proximamente {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.1rem;
+        letter-spacing: 0.25em;
+        text-transform: uppercase;
+        color: #c4a35a;
+        font-weight: 600;
+      }
+
+      @media (max-width: 480px) {
+        .message {
+          font-size: 1.15rem;
+        }
+        .logo {
+          width: 220px;
+          margin-bottom: 2rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <img
+        src={`${baseUrl}ConstructionLogo.jpeg`}
+        alt="Hijas Únicas Editorial"
+        class="logo"
       />
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        {featuredBooks.map((book) => (
-          <BookCard
-            title={book.title}
-            author={book.author}
-            coverUrl={book.coverUrl}
-            slug={book.slug}
-          />
-        ))}
-      </div>
-      <div class="text-center mt-12">
-        <a
-          href={`${baseUrl}catalogo/`}
-          class="inline-block border-2 border-navy text-navy px-8 py-3 font-heading text-sm tracking-widest uppercase hover:bg-navy hover:text-cream transition-colors"
-        >
-          Ver todo el catálogo
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Latest Blog Post -->
-  {latestPost && (
-    <section class="py-16 sm:py-20 bg-white/50">
-      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <SectionHeading
-          title="Últimas noticias"
-          subtitle="Novedades, entrevistas y más desde la editorial."
-        />
-        <div class="max-w-xl mx-auto">
-          <BlogCard
-            title={latestPost.title}
-            excerpt={latestPost.excerpt}
-            date={latestPost.publishDate}
-            coverUrl={latestPost.coverUrl}
-            slug={latestPost.slug}
-          />
-        </div>
-        <div class="text-center mt-12">
-          <a
-            href={`${baseUrl}blog/`}
-            class="inline-block border-2 border-navy text-navy px-8 py-3 font-heading text-sm tracking-widest uppercase hover:bg-navy hover:text-cream transition-colors"
-          >
-            Leer más
-          </a>
-        </div>
-      </div>
-    </section>
-  )}
-
-  <!-- CTA -->
-  <section class="py-16 sm:py-20">
-    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h2 class="font-heading text-navy text-3xl sm:text-4xl mb-4">
-        ¿Tienes una historia que contar?
-      </h2>
-      <p class="text-text-light mb-8">
-        En Hijas Únicas buscamos voces auténticas con historias que merezcan ser escuchadas.
+      <div class="divider"></div>
+      <p class="message">
+        Todo empieza con una historia<br />y la nuestra está a punto de empezar.
       </p>
-      <a
-        href={`${baseUrl}contacto/`}
-        class="inline-block bg-gold text-white px-8 py-3 font-heading text-sm tracking-widest uppercase hover:bg-gold-light transition-colors"
-      >
-        Escríbenos
-      </a>
+      <p class="proximamente">Próximamente</p>
     </div>
-  </section>
-</BaseLayout>
+  </body>
+</html>
