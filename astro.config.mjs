@@ -3,8 +3,8 @@ import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
-  site: 'https://tibo1786.github.io',
-  base: '/hijasunicas/',
+  site: 'https://hijasunicas.es',
+  base: '/',
   output: 'static',
   vite: {
     plugins: [tailwindcss()],
