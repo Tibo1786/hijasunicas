@@ -8,7 +8,15 @@ const baseUrl = import.meta.env.BASE_URL;
   title="Hijas Únicas Editorial — Próximamente"
   description="Hijas Únicas Editorial — Todo empieza con una historia y la nuestra está a punto de empezar."
 >
-  <section class="py-20 sm:py-28 lg:py-32">
+  <section class="relative py-20 sm:py-28 lg:py-32 overflow-hidden">
+    <div class="absolute inset-0 -z-10">
+      <div
+        class="absolute inset-0 scale-105 bg-cover bg-center blur-sm opacity-60"
+        style={`background-image: url(${baseUrl}hero-bg.jpg)`}
+      >
+      </div>
+      <div class="absolute inset-0 bg-gradient-to-b from-cream/60 via-cream/40 to-cream/70"></div>
+    </div>
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
       <p class="font-heading text-navy text-6xl sm:text-7xl lg:text-8xl tracking-widest mb-4">
         hijas únicas
