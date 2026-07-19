@@ -4,11 +4,12 @@ const currentPath = Astro.url.pathname;
 
 const links = [
   { href: `${baseUrl}`, label: 'Inicio' },
-  { href: `${baseUrl}catalogo/`, label: 'Catálogo' },
-  { href: `${baseUrl}blog/`, label: 'Observatorio de libros' },
   { href: `${baseUrl}nosotras/`, label: 'Nosotras' },
   { href: `${baseUrl}contacto/`, label: 'Contacto' },
 ];
+
+// Catálogo y Observatorio de libros vuelven al menú cuando tengan
+// libros y artículos reales — hoy usan datos de ejemplo.
 
 function isActive(href: string): boolean {
   if (href === baseUrl) return currentPath === href;
