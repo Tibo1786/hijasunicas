@@ -78,37 +78,4 @@ export const PLACEHOLDER_BOOKS: Book[] = [
   },
 ];
 
-export const PLACEHOLDER_POSTS: BlogPost[] = [
-  {
-    _id: '1',
-    title: 'Bienvenidas a Hijas Únicas Editorial',
-    slug: 'bienvenidas',
-    excerpt: 'Nace un nuevo proyecto editorial dedicado a dar voz a historias únicas. Descubre nuestra misión y nuestros primeros títulos.',
-    body: [],
-    author: 'Equipo editorial',
-    publishDate: '2024-01-15',
-    category: 'Noticias',
-  },
-  {
-    _id: '2',
-    title: 'Entrevista con María del Carmen López',
-    slug: 'entrevista-maria-del-carmen-lopez',
-    coverUrl: '/hijasunicas/covers/blog-entrevista.svg',
-    excerpt: 'Hablamos con la autora de "El jardín de las voces" sobre su proceso creativo y la importancia de la memoria familiar.',
-    body: [],
-    author: 'Equipo editorial',
-    publishDate: '2024-04-20',
-    category: 'Entrevistas',
-  },
-  {
-    _id: '3',
-    title: 'Novedades de otoño 2024',
-    slug: 'novedades-otono-2024',
-    coverUrl: '/hijasunicas/covers/blog-otono-2024.svg',
-    excerpt: 'Os presentamos las novedades que llegan este otoño. Nuevas voces, nuevas historias, misma pasión por la literatura.',
-    body: [],
-    author: 'Equipo editorial',
-    publishDate: '2024-09-01',
-    category: 'Noticias',
-  },
-];
+export const PLACEHOLDER_POSTS: BlogPost[] = [];

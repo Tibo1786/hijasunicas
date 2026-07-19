@@ -9,24 +9,31 @@ const posts = [...PLACEHOLDER_POSTS].sort(
 );
 ---
 
-<BaseLayout title="Observatorio de libros — Hijas Únicas Editorial" description="Noticias, entrevistas y novedades de Hijas Únicas Editorial.">
+<BaseLayout title="Observatorio de libros — Hijas Únicas Editorial" description="Los libros que vamos leyendo y nos van gustando.">
   <section class="py-16 sm:py-24">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <SectionHeading
         title="Observatorio de libros"
-        subtitle="Noticias, entrevistas y reflexiones desde la editorial."
+        subtitle="Los libros que vamos leyendo y nos van gustando."
       />
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        {posts.map((post) => (
-          <BlogCard
-            title={post.title}
-            excerpt={post.excerpt}
-            date={post.publishDate}
-            coverUrl={post.coverUrl}
-            slug={post.slug}
-          />
-        ))}
-      </div>
+      {posts.length > 0 ? (
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          {posts.map((post) => (
+            <BlogCard
+              title={post.title}
+              excerpt={post.excerpt}
+              date={post.publishDate}
+              coverUrl={post.coverUrl}
+              slug={post.slug}
+            />
+          ))}
+        </div>
+      ) : (
+        <p class="text-text-light text-center">
+          Todavía no hemos publicado nada aquí. Vuelve pronto — iremos añadiendo los libros que
+          vayamos leyendo y nos vayan gustando.
+        </p>
+      )}
     </div>
   </section>
 </BaseLayout>
