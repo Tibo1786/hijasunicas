@@ -78,4 +78,14 @@ export const PLACEHOLDER_BOOKS: Book[] = [
   },
 ];
 
-export const PLACEHOLDER_POSTS: BlogPost[] = [];
+export const PLACEHOLDER_POSTS: BlogPost[] = [
+  {
+    _id: '1',
+    title: 'Una breve temporada en el infierno',
+    slug: 'una-breve-temporada-en-el-infierno',
+    excerpt: 'A Clara le está gustando.',
+    body: [],
+    author: 'Clara',
+    publishDate: '2026-07-19',
+  },
+];
