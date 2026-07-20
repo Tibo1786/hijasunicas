@@ -18,15 +18,7 @@ function isActive(href: string): boolean {
 
 <header class="bg-cream border-b border-cream-dark">
   <nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex items-center justify-between h-28">
-      <a href={baseUrl} class="flex items-center gap-3 group">
-        <img
-          src={`${baseUrl}logo.png`}
-          alt="Hijas Únicas Editorial"
-          class="h-20 w-auto"
-        />
-      </a>
-
+    <div class="flex items-center justify-end h-28">
       <!-- Desktop nav -->
       <ul class="hidden md:flex items-center gap-8">
         {links.map((link) => (
